@@ -6,11 +6,12 @@ const object1 = ['milk', 'potatoes', 'pasta', 'pineapples', 'bananas', 'bread', 
 
 const subject2 = ['I', 'You', 'He', 'She', 'Hilary Clinton', 'Your neighbour', 'Elon Musk', 'Britney Spears', 'My dog', 'Your pet', 'Bob Sinclar', 'Indiana Jones', 'Katy Parry', 'Harry Potter', 'Your friends cat', 'John Lenon', 'My school friend', 'The Royal Family', 'Bill Gates', 'Mayor of your city', 'Napoleon Bonaparte', 'Chingis Khan', 'Your favorite Hollywood actor', 'Alice', 'The white rabbit', 'My friend', 'Your friend', 'My favorite singer', 'Army of Sauron', 'A fellowship of the ring'];
 const verb2 = ['like to travel to', "don't like to travel to", 'visited', "never been to", 'live in', 'want to visit', 'like to party in', "played quidditch in", 'use a public transport in', 'search for a crystal skull in', 'had a concert in', 'spend holidays in', 'was born in', 'rent a room in', 'was teleported to', 'played Monopoly in', 'is lost in the jungle that grows in', 'was kidnapped by wild tribes of', 'met me in', 'invites you to', 'go hiking in', 'fell into the rabbit hole and landed in'];
-const object2 = ['my house', 'your kitchen', 'Costa Rica', 'International Space Station', 'Tenerife', 'Maldives', 'French Polynesia', 'your wardrobe', 'London', 'house of Bill Gates', 'virtual reality', 'The City of New York', 'Nostromo starship', 'my friends backyard', 'Hogwart school of magic', 'the temple of doom', 'South Africa', 'Poland', 'grasslands of Mongolia', 'Russian Ural Montains', 'peak of Kilimanjaro', 'Area 51', 'Roswell', 'Wonderland'];
+const object2 = ['my house.', 'your kitchen.', 'Costa Rica.', 'International Space Station.', 'Tenerife.', 'Maldives.', 'French Polynesia.', 'your wardrobe.', 'London.', 'house of Bill Gates.', 'virtual reality.', 'The City of New York.', 'Nostromo starship.', 'my friends backyard.', 'Hogwart school of magic.', 'the temple of doom.', 'South Africa.', 'Poland.', 'grasslands of Mongolia.', 'Russian Ural Montains.', 'peak of Kilimanjaro.', 'Area 51.', 'Roswell.', 'Wonderland.'];
+const extra = ["Perhaps it doesn't make sence.", "I know it might sound crazy, but it's true.", "Don't you believe me?", "I was there that time, and saw everything.", "Stephen Spielberg is producing a movie based on that.", "J. K. Rowling is writing a book about it."];
 
 // Variable containing number of generated quotes, and variable picking between 2 sets of quote arrays.
 
-let selectNumberOfQuotes = 1;
+let selectNumberOfQuotes = 3;
 let selectQuote = 1;
 
 // Function picking random quotation element from array
@@ -21,7 +22,7 @@ function randomElement (array) {
 
 // Function logging the random quotation to console
 
-function displayQuote (subject, verb, object){
+function displayQuote (subject, verb, object) {
 console.log(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
 }
 
@@ -33,8 +34,13 @@ function pickAndDisplay () {
             displayQuote(subject1, verb1, object1);
         };
     } else if (selectNumberOfQuotes > 0 && selectNumberOfQuotes <= 5 && selectQuote == 2) {
-        for (let i = 1; i <= selectNumberOfQuotes; i++) {
-            displayQuote(subject2, verb2, object2);
+        for (let i = 1; i <= selectNumberOfQuotes; i++){
+            let chanceForExtra = Math.floor(Math.random()*3);
+            if (chanceForExtra > 1) {
+                displayQuote(subject2, verb2, object2);
+            } else {
+                console.log(subject2[randomElement(subject2)] + ' ' + verb2[randomElement(verb2)] + ' ' + object2[randomElement(object2)] + ' ' + extra[randomElement(extra)]);
+            };
         };
     } else {
         console.log('please pick number of quotes between 1 - 5 and select quote between 1 - 2');
