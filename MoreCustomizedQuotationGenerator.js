@@ -17,7 +17,7 @@ function randomElement (array) {
 
 }
 
-// Function printing the random quotation to console
+// Function printing the random quotation
 
 function displayQuote (subject, verb, object) {
 
