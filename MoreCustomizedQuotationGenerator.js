@@ -12,16 +12,24 @@ const extra = ["Perhaps it doesn't make sence.", "I know it might sound crazy, b
 // Function picking random quotation element from array
 
 function randomElement (array) {
+
     return Math.floor(Math.random()*array.length);
+
 }
 
 // Function printing the random quotation to console
 
 function displayQuote (subject, verb, object) {
-alert(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
+
+    alert(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
+
 }
 
-// Function checking picked number of quotes and picked set of quote elements to display the content accordingly 
+//boolean switch for while loop that calls main function pickAndDisplay()
+
+let generateAgain = true;
+
+// Main Function checking picked number of quotes and picked set of quote elements to display the content accordingly 
 
 function pickAndDisplay () {
 
@@ -29,10 +37,13 @@ function pickAndDisplay () {
     const selectQuote = prompt ('Select your quote set. Type 1 for simple quote and 2 for advanced quote');
 
     if (selectNumberOfQuotes > 0 && selectNumberOfQuotes <= 5 && selectQuote == 1) {
+
         for (let i = 1; i <= selectNumberOfQuotes; i++) {
             displayQuote(subject1, verb1, object1);
         };
+        
     } else if (selectNumberOfQuotes > 0 && selectNumberOfQuotes <= 5 && selectQuote == 2) {
+
         for (let i = 1; i <= selectNumberOfQuotes; i++){
             const chanceForExtra = Math.floor(Math.random()*3);
             if (chanceForExtra > 1) {
@@ -41,18 +52,22 @@ function pickAndDisplay () {
                 alert(subject2[randomElement(subject2)] + ' ' + verb2[randomElement(verb2)] + ' ' + object2[randomElement(object2)] + ' ' + extra[randomElement(extra)]);
             };
         };
+
     } else {
+
         alert('please pick number of quotes between 1 - 5 and select quote between 1 - 2');
-    };
 
-    const generateAgain = confirm('do you want to generate a new set of quotes?');
-
-    if (generateAgain == true) {
-        pickAndDisplay();
-    } else {
-        alert('It was fun to generate quotes for you. Have a good day.')
     };
+};
+
+// While loop calling the main function as long as user wants to generate new quotes
+
+while (generateAgain) {
+
+    pickAndDisplay();
+    generateAgain = confirm('do you want to generate a new set of quotes?');
 
 };
 
-pickAndDisplay();
+alert('It was fun to generate quotes for you. Have a good day.');
+    
