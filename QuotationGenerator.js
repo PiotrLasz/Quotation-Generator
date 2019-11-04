@@ -10,6 +10,6 @@ function randomElement (array) {
     return Math.floor(Math.random()*array.length);
 }
 
-// Logging the random quotation to console
+// Display of random quotation to alert window
 
-console.log(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
+alert(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
