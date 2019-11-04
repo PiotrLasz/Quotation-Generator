@@ -9,26 +9,25 @@ const verb2 = ['like to travel to', "don't like to travel to", 'visited', "never
 const object2 = ['my house.', 'your kitchen.', 'Costa Rica.', 'International Space Station.', 'Tenerife.', 'Maldives.', 'French Polynesia.', 'your wardrobe.', 'London.', 'house of Bill Gates.', 'virtual reality.', 'The City of New York.', 'Nostromo starship.', 'my friends backyard.', 'Hogwart school of magic.', 'the temple of doom.', 'South Africa.', 'Poland.', 'grasslands of Mongolia.', 'Russian Ural Montains.', 'peak of Kilimanjaro.', 'Area 51.', 'Roswell.', 'Wonderland.'];
 const extra = ["Perhaps it doesn't make sence.", "I know it might sound crazy, but it's true.", "Don't you believe me?", "I was there that time, and saw everything.", "Stephen Spielberg is producing a movie based on that.", "J. K. Rowling is writing a book about it."];
 
-// Variable containing number of generated quotes, and variable picking between 2 sets of quote arrays.
-
-let selectNumberOfQuotes = 3;
-let selectQuote = 1;
-
 // Function picking random quotation element from array
 
 function randomElement (array) {
     return Math.floor(Math.random()*array.length);
 }
 
-// Function logging the random quotation to console
+// Function printing the random quotation to console
 
 function displayQuote (subject, verb, object) {
-console.log(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
+alert(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
 }
 
 // Function checking picked number of quotes and picked set of quote elements to display the content accordingly 
 
 function pickAndDisplay () {
+
+    const selectNumberOfQuotes = prompt ('Please pick number of quotes to generate (between 1 and 5)');
+    const selectQuote = prompt ('Select your quote set. Type 1 for simple quote and 2 for advanced quote');
+
     if (selectNumberOfQuotes > 0 && selectNumberOfQuotes <= 5 && selectQuote == 1) {
         for (let i = 1; i <= selectNumberOfQuotes; i++) {
             displayQuote(subject1, verb1, object1);
@@ -39,12 +38,21 @@ function pickAndDisplay () {
             if (chanceForExtra > 1) {
                 displayQuote(subject2, verb2, object2);
             } else {
-                console.log(subject2[randomElement(subject2)] + ' ' + verb2[randomElement(verb2)] + ' ' + object2[randomElement(object2)] + ' ' + extra[randomElement(extra)]);
+                alert(subject2[randomElement(subject2)] + ' ' + verb2[randomElement(verb2)] + ' ' + object2[randomElement(object2)] + ' ' + extra[randomElement(extra)]);
             };
         };
     } else {
-        console.log('please pick number of quotes between 1 - 5 and select quote between 1 - 2');
+        alert('please pick number of quotes between 1 - 5 and select quote between 1 - 2');
     };
+
+    const generateAgain = confirm('do you want to generate a new set of quotes?');
+
+    if (generateAgain == true) {
+        pickAndDisplay();
+    } else {
+        alert('It was fun to generate quotes for you. Have a good day.')
+    };
+
 };
 
 pickAndDisplay();
