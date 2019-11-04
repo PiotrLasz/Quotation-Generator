@@ -21,7 +21,7 @@ function randomElement (array) {
 
 function displayQuote (subject, verb, object) {
 
-    alert(subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
+    return (subject[randomElement(subject)] + ' ' + verb[randomElement(verb)] + ' ' + object[randomElement(object)]);
 
 }
 
@@ -38,20 +38,28 @@ function pickAndDisplay () {
 
     if (selectNumberOfQuotes > 0 && selectNumberOfQuotes <= 5 && selectQuote == 1) {
 
+        let x = '';
+
         for (let i = 1; i <= selectNumberOfQuotes; i++) {
-            displayQuote(subject1, verb1, object1);
+            x = x + displayQuote(subject1, verb1, object1) + '\n' + '\n';
         };
+
+        alert(x);
         
     } else if (selectNumberOfQuotes > 0 && selectNumberOfQuotes <= 5 && selectQuote == 2) {
+
+        let x = '';
 
         for (let i = 1; i <= selectNumberOfQuotes; i++){
             const chanceForExtra = Math.floor(Math.random()*3);
             if (chanceForExtra > 1) {
-                displayQuote(subject2, verb2, object2);
+               x = x + displayQuote(subject2, verb2, object2) + '\n' + '\n';
             } else {
-                alert(subject2[randomElement(subject2)] + ' ' + verb2[randomElement(verb2)] + ' ' + object2[randomElement(object2)] + ' ' + extra[randomElement(extra)]);
+                x = x + displayQuote(subject2, verb2, object2) + ' ' + extra[randomElement(extra)] + '\n' + '\n';
             };
         };
+
+        alert(x);
 
     } else {
 
@@ -70,4 +78,3 @@ while (generateAgain) {
 };
 
 alert('It was fun to generate quotes for you. Have a good day.');
-    
